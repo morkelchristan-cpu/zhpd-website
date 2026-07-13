@@ -24,3 +24,25 @@ body {
 }
 .nav-link { color: #94A3B8; text-decoration: none; transition: color 0.3s ease; }
 .nav-link:hover { color: #FFFFFF; }
+
+main {
+  animation: pageTransition 0.5s ease-in-out;
+}
+
+@keyframes pageTransition {
+  from { opacity: 0; filter: blur(5px); }
+  to { opacity: 1; filter: blur(0px); }
+}
+
+.glass-panel {
+  background: rgba(21, 34, 56, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.glass-panel:hover {
+  transform: translateY(-5px);
+  background: rgba(30, 58, 95, 0.5);
+}
