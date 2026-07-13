@@ -1,19 +1,16 @@
 'use client';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
-  const pathname = usePathname();
-  
-  // Updated list with 'Reports' included
+  // Navigation links updated for single-page scrolling
   const links = [
-    { name: 'Home', path: '/' },
-    { name: 'Divisions', path: '/divisions' },
-    { name: 'Command', path: '/command' },
-    { name: 'Roster', path: '/roster' },
-    { name: 'AI', path: '/ai' },
-    { name: 'Reports', path: '/reports' },
-    { name: 'Logs', path: '/logs' }
+    { name: 'Home', path: '#home' },
+    { name: 'Divisions', path: '#divisions' },
+    { name: 'Reports', path: '#reports' },
+    { name: 'Command', path: '#command' },
+    { name: 'Roster', path: '#roster' },
+    { name: 'AI', path: '#ai' },
+    { name: 'Logs', path: '#logs' }
   ];
 
   return (
@@ -29,26 +26,24 @@ export default function Navbar() {
       borderRadius: '50px',
       border: '1px solid rgba(255, 255, 255, 0.1)'
     }}>
-      {links.map((link) => {
-        const isActive = pathname === link.path;
-        return (
-          <Link 
-            key={link.name} 
-            href={link.path} 
-            style={{ 
-              textDecoration: 'none', 
-              color: isActive ? '#fff' : '#94a3b8',
-              fontSize: '0.75rem', 
-              textTransform: 'uppercase', 
-              letterSpacing: '0.2em',
-              transition: 'all 0.3s ease',
-              fontWeight: isActive ? '600' : '400'
-            }}
-          >
-            {link.name}
-          </Link>
-        );
-      })}
+      {links.map((link) => (
+        <Link 
+          key={link.name} 
+          href={link.path} 
+          style={{ 
+            textDecoration: 'none', 
+            color: '#94a3b8',
+            fontSize: '0.75rem', 
+            textTransform: 'uppercase', 
+            letterSpacing: '0.2em',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseOver={(e) => e.currentTarget.style.color = '#fff'}
+          onMouseOut={(e) => e.currentTarget.style.color = '#94a3b8'}
+        >
+          {link.name}
+        </Link>
+      ))}
     </nav>
   );
 }

@@ -1,44 +1,29 @@
-import Image from 'next/image';
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main style={{ 
-      minHeight: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      paddingTop: '60px' // Provides space below the fixed navbar
-    }}>
+    <main style={{ scrollBehavior: 'smooth' }}>
       
-      {/* Hero Section: Centered Logo and Title */}
-      <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <Image src="/logo.png" alt="LSPD Logo" width={250} height={250} priority />
-        <h1 style={{ 
-          fontSize: '3rem', 
-          margin: '20px 0 0 0', 
-          textTransform: 'uppercase', 
-          letterSpacing: '0.1em' 
-        }}>
-          LSPD Portal
-        </h1>
-      </div>
+      {/* SECTION 1: HERO */}
+      <section id="home" style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <img src="/logo.png" alt="LSPD Logo" style={{ width: '200px', marginBottom: '20px' }} />
+        <h1 style={{ fontSize: '3.5rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>LSPD Portal</h1>
+        <p style={{ color: '#64748b' }}>Scroll down to access tactical systems</p>
+      </section>
 
-      {/* Information Section: Centered Block */}
-      <div className="glass-effect" style={{ 
-        width: '80%', 
-        maxWidth: '800px', 
-        padding: '50px', 
-        textAlign: 'center' 
-      }}>
-        <h2 style={{ marginBottom: '20px', letterSpacing: '0.05em' }}>DEPARTMENT INFORMATION</h2>
-        <p style={{ color: '#94a3b8', lineHeight: '1.8', fontSize: '1.1rem' }}>
-          The Los Santos Police Department is an elite law enforcement agency. 
-          This portal serves as the central hub for officer communications, 
-          incident documentation, and tactical coordination.
-        </p>
-      </div>
-      
+      {/* SECTION 2: DIVISIONS (Embed your content here) */}
+      <section id="divisions" className="page-container" style={{ minHeight: '100vh', padding: '100px 40px' }}>
+        <div className="glass-effect" style={{ width: '100%', maxWidth: '800px', padding: '40px' }}>
+          <h2>DEPARTMENT DIVISIONS</h2>
+          <p>CID, S.W.A.T, Air One, HPU, HR, IA</p>
+        </div>
+      </section>
+
+      {/* SECTION 3: REPORTS/LOGS (Continue pattern for other sections) */}
+      <section id="reports" className="page-container" style={{ minHeight: '100vh', padding: '100px 40px' }}>
+         <div className="glass-effect" style={{ width: '100%', maxWidth: '800px', padding: '40px' }}>
+          <h2>TACTICAL REPORTS</h2>
+          {/* Your Reports Form Component */}
+        </div>
+      </section>
     </main>
   );
 }
