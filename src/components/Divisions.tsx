@@ -1,28 +1,14 @@
-export default function Divisions() {
-  const divisions = [
-    "Patrol Division", "Traffic Enforcement", "SWAT", 
-    "Detective Bureau", "Training Academy", "Internal Affairs", 
-    "K9 Unit", "Air Support"
-  ];
+import styles from './Divisions.module.css';
 
+const divisions = ['Patrol', 'Traffic', 'SWAT', 'Detective', 'Training', 'IA', 'K9', 'Air'];
+
+export default function Divisions() {
   return (
-    <section style={{ padding: '80px 20px', backgroundColor: '#0D1B2A' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '40px', fontSize: '2.5rem' }}>Divisions</h2>
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-        gap: '20px',
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
+    <section className={styles.section}>
+      <h2 className={styles.title}>Divisions</h2>
+      <div className={styles.grid}>
         {divisions.map((div) => (
-          <div key={div} style={{ 
-            padding: '30px', 
-            background: '#152238', 
-            borderRadius: '8px',
-            border: '1px solid #1E3A5F',
-            textAlign: 'center'
-          }}>
+          <div key={div} className={styles.card}>
             <h3>{div}</h3>
           </div>
         ))}
