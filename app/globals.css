@@ -1,40 +1,39 @@
 @import "tailwindcss";
 
+:root {
+  --bg-dark: #050505;
+  --glass: rgba(20, 20, 25, 0.7);
+  --accent: #2563eb;
+  --text: #f8fafc;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  background: url('/backgroundcar.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #ffffff;
+  background: radial-gradient(circle at top right, #1e293b, #050505);
+  color: var(--text);
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Glassmorphism style for all components */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+/* Master Glass Container */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid var(--accent);
   border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Smooth transition animation for every page */
-main {
-  animation: fadeIn 0.4s ease-in-out forwards;
+/* Entrance Animation */
+.animate-in {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Ensure the glass box doesn't touch the edges and stays centered */
-.scroll-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;     /* Centers vertically */
-  padding: 20px;
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }

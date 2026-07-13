@@ -1,22 +1,29 @@
 import Navbar from '@/src/components/Navbar';
 
 export default function CommandPage() {
+  const staff = [
+    { role: 'Chief of Police', name: 'Cloudii' },
+    { role: 'Assistant Chief', name: 'TBD' },
+    { role: 'Captain', name: 'TBD' }
+  ];
+
   return (
-    <main style={{ paddingTop: '150px', paddingLeft: '20px', paddingRight: '20px' }}>
+    <main className="animate-in" style={{ paddingTop: '150px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Navbar />
-      <div className="glass-effect" style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
-        <h1 style={{ marginBottom: '10px' }}>Command Structure</h1>
-        <p style={{ opacity: 0.7, marginBottom: '30px' }}>Official departmental hierarchy.</p>
-        
+      <div className="glass-panel" style={{ width: '90%', maxWidth: '800px' }}>
+        <h2 style={{ textTransform: 'uppercase', marginBottom: '30px', borderBottom: '1px solid #334155', paddingBottom: '10px' }}>
+          Chain of Command
+        </h2>
         <div style={{ display: 'grid', gap: '15px' }}>
-          <div className="glass-effect" style={{ padding: '20px' }}>
-            <h3>Chief of Police</h3>
-            <p style={{ color: '#3b82f6', fontWeight: 'bold' }}>Cloudii</p>
-          </div>
-          <div className="glass-effect" style={{ padding: '20px' }}>
-            <h3>Assistant Chief</h3>
-            <p style={{ color: '#3b82f6', fontWeight: 'bold' }}>TBD</p>
-          </div>
+          {staff.map((member) => (
+            <div key={member.role} style={{ 
+              background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '8px',
+              display: 'flex', justifyContent: 'space-between' 
+            }}>
+              <span style={{ color: '#94a3b8', fontWeight: 600 }}>{member.role}</span>
+              <span style={{ fontSize: '1.1rem' }}>{member.name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </main>
