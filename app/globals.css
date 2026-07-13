@@ -1,41 +1,48 @@
 @import "tailwindcss";
 
-/* 1. Reset & Global Aesthetics */
-body {
-  margin: 0;
-  padding: 0;
-  background: url('/backgroundcar.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #ffffff;
-  /* Premium font stack */
-  font-family: 'Inter', -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+:root {
+  --bg-dark: #0a0a0c;
+  --bg-panel: #121215;
+  --accent-blue: #2563eb;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
 }
 
-/* Deep overlay for authority */
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Background Car locked behind the dark theme */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('/backgroundcar.png') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.15; /* Subdued image to allow black/grey dominance */
   z-index: -1;
 }
 
-/* 2. Professional Glass Styling */
+/* Professional Glass Panels */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  background: rgba(18, 18, 21, 0.85);
+  border: 1px solid #2d2d35;
+  border-left: 4px solid var(--accent-blue);
+  border-radius: 12px;
   padding: 40px;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
-/* 3. Smooth Snap Scrolling */
+.glass-panel:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+/* Scroll Snap Container */
 .scroll-container {
   height: 100vh;
   overflow-y: scroll;
@@ -48,7 +55,6 @@ body::before {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 /* Smooth Scrolling */
 html {
