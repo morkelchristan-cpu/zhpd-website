@@ -37,3 +37,20 @@ body {
   from { opacity: 0; transform: translateY(20px) scale(0.98); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* Update glass-panel to handle grid child layouts better */
+.glass-panel {
+  background: rgba(20, 20, 25, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+/* Ensure mobile responsiveness */
+@media (max-width: 768px) {
+  div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+}
