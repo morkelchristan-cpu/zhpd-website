@@ -16,4 +16,9 @@ export default function Hero() {
       <p className={styles.subtitle}>Integrity. Service. Professionalism.</p>
     </section>
   );
+
+<section className="glass-panel" style={{ margin: '40px auto', maxWidth: '1000px' }}>
+  {/* Your component content */}
+</section>
+
 }

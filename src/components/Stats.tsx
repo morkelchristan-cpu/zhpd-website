@@ -17,4 +17,9 @@ export default function Stats() {
       </div>
     </section>
   );
+
+  <section className="glass-panel" style={{ margin: '40px auto', maxWidth: '1000px' }}>
+  {/* Your component content */}
+</section>
+
 }
