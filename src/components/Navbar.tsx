@@ -5,13 +5,14 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const pathname = usePathname();
   
-  // All active routes in your portal
+  // Updated list with 'Reports' included
   const links = [
     { name: 'Home', path: '/' },
     { name: 'Divisions', path: '/divisions' },
     { name: 'Command', path: '/command' },
     { name: 'Roster', path: '/roster' },
     { name: 'AI', path: '/ai' },
+    { name: 'Reports', path: '/reports' },
     { name: 'Logs', path: '/logs' }
   ];
 
@@ -23,7 +24,7 @@ export default function Navbar() {
       transform: 'translateX(-50%)', 
       padding: '12px 35px', 
       display: 'flex', 
-      gap: '30px', 
+      gap: '25px', 
       zIndex: 1000, 
       borderRadius: '50px',
       border: '1px solid rgba(255, 255, 255, 0.1)'
