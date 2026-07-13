@@ -1,122 +1,24 @@
 @import "tailwindcss";
 
-:root {
-  --bg-dark: #050505;
-  --glass: rgba(20, 20, 25, 0.7);
-  --accent: #2563eb;
-  --text: #f8fafc;
-}
-
-body {
-  margin: 0;
-  background: radial-gradient(circle at top right, #1e293b, #050505);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+.bg-gradient {
+  background: radial-gradient(circle at 50% 0%, #1e3a8a, #050505);
+  background-attachment: fixed;
   min-height: 100vh;
+  color: white;
 }
 
-/* Master Glass Container */
-.glass-panel {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 4px solid var(--accent);
-  border-radius: 16px;
-  padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Entrance Animation */
-.animate-in {
-  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(20px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Update glass-panel to handle grid child layouts better */
-.glass-panel {
-  background: rgba(20, 20, 25, 0.8);
-  backdrop-filter: blur(20px);
+.glass-effect {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 4px solid var(--accent);
-  border-radius: 12px;
-  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Ensure mobile responsiveness */
-@media (max-width: 768px) {
-  div[style*="grid"] {
-    grid-template-columns: 1fr !important;
-  }
+.content-wrapper {
+  animation: fadeIn 0.8s ease-out;
 }
 
-/* AI Input Glow */
-.glass-effect:focus-within {
-  box-shadow: 0 0 20px rgba(37, 99, 235, 0.2);
-  border-color: #3b82f6;
-}
-
-/* Suggestion chip hover */
-span:hover {
-  background: rgba(37, 99, 235, 0.2) !important;
-  color: #fff !important;
-  transition: all 0.3s ease;
-}
-
-/* Enable Scroll Snapping */
-.scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-
-.scroll-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Glass effect for panels */
-.glass-effect {
-  background: rgba(20, 20, 25, 0.85);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-}
-
-@import "tailwindcss";
-
-body {
-  margin: 0;
-  background: radial-gradient(circle at center, #111118, #050505);
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
-}
-
-/* Master Glass Class */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* Page Transition Animation */
-main {
-  animation: fadeSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
