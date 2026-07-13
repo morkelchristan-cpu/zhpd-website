@@ -6,6 +6,9 @@ import { signOut } from 'next-auth/react';
 export default function Navbar() {
   const pathname = usePathname();
   
+  // Updated list includes 'AI'
+  const navItems = ['Home', 'Divisions', 'Command', 'Roster', 'AI'];
+  
   return (
     <nav className="glass-effect" style={{ 
       position: 'fixed', 
@@ -17,7 +20,7 @@ export default function Navbar() {
       gap: '30px', 
       zIndex: 1000
     }}>
-      {['Home', 'Divisions', 'Command', 'Roster'].map((item) => {
+      {navItems.map((item) => {
         const href = item === 'Home' ? '/' : `/${item.toLowerCase()}`;
         const isActive = pathname === href;
         return (
