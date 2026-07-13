@@ -29,4 +29,8 @@ export default function ReportsPage() {
       </div>
     </main>
   );
+
+// Standard form that sends data to localStorage['incidentLogs']
+// (This is already set up in your previous version)
+
 }
