@@ -6,7 +6,7 @@ export default function Home() {
     <main className="scroll-container">
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Hero Section - Keeps everything centered */}
       <section className="scroll-section">
         <div style={{ textAlign: 'center' }}>
           <Image src="/logo.png" alt="Department Logo" width={220} height={220} priority />
@@ -19,26 +19,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About/Mission Section */}
+      {/* Mission & Stats Section - Now safely inside a glass-effect box */}
       <section className="scroll-section">
-        <div className="glass-panel" style={{ width: '700px' }}>
-          <h2 style={{ fontSize: '1.5rem', marginBottom: '20px', color: '#fff' }}>DEPARTMENT MISSION</h2>
-          <p style={{ color: '#94a3b8', lineHeight: '1.8', fontSize: '1.1rem' }}>
+        <div className="glass-effect" style={{ width: '80%', maxWidth: '800px', padding: '50px', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>DEPARTMENT MISSION</h2>
+          <p style={{ color: '#d1d5db', lineHeight: '1.8', fontSize: '1.1rem', marginBottom: '40px' }}>
             The ZeroHour Police Department is dedicated to maintaining the highest standard of public safety. 
             Through tactical excellence and unwavering integrity, we ensure the city remains protected at all times.
           </p>
-        </div>
-      </section>
-
-      {/* Quick Stats Section */}
-      <section className="scroll-section">
-        <div className="glass-panel" style={{ width: '700px', display: 'flex', justifyContent: 'space-around' }}>
-          {[ { label: 'Active Officers', val: '42' }, { label: 'Calls Responded', val: '890' } ].map((stat) => (
-            <div key={stat.label} style={{ textAlign: 'center' }}>
-              <h3 style={{ fontSize: '2.5rem', margin: 0, color: '#2563eb' }}>{stat.val}</h3>
-              <p style={{ color: '#94a3b8', margin: '5px 0 0' }}>{stat.label}</p>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '100px' }}>
+            <div>
+              <h3 style={{ fontSize: '2.5rem', margin: 0, color: '#3b82f6' }}>42</h3>
+              <p style={{ color: '#94a3b8' }}>Active Officers</p>
             </div>
-          ))}
+            <div>
+              <h3 style={{ fontSize: '2.5rem', margin: 0, color: '#3b82f6' }}>890</h3>
+              <p style={{ color: '#94a3b8' }}>Calls Responded</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>

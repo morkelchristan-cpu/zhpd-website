@@ -28,3 +28,13 @@ main {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Ensure the glass box doesn't touch the edges and stays centered */
+.scroll-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  padding: 20px;
+}
