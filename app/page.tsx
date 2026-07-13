@@ -1,40 +1,38 @@
 import Navbar from '@/src/components/Navbar';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="animate-in" style={{ minHeight: '100vh', paddingTop: '100px', padding: '100px 5%' }}>
+    <main className="animate-in" style={{ 
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      paddingTop: '150px' 
+    }}>
       <Navbar />
-      
-      {/* Dashboard Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '30px' }}>
-        
-        {/* Sidebar Module */}
-        <div className="glass-panel" style={{ height: 'fit-content' }}>
-          <h3 style={{ textTransform: 'uppercase', marginBottom: '20px' }}>Status</h3>
-          <div style={{ color: '#94a3b8' }}>
-            <p>System: <span style={{ color: '#2563eb' }}>Online</span></p>
-            <p>Jurisdiction: <span style={{ color: '#fff' }}>Los Santos</span></p>
-          </div>
-        </div>
 
-        {/* Main Hero Module */}
-        <div className="glass-panel">
-          <h1 style={{ fontSize: '2.5rem', textTransform: 'uppercase', marginBottom: '10px' }}>
-            ZeroHour Command
-          </h1>
-          <p style={{ color: '#94a3b8', marginBottom: '30px' }}>
-            Centralized portal for departmental coordination, tactical deployments, and officer records.
-          </p>
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <button style={{ background: '#2563eb', border: 'none', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer', color: '#fff' }}>
-              View Active Units
-            </button>
-            <button style={{ background: 'transparent', border: '1px solid #334155', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer', color: '#fff' }}>
-              Access Dispatch
-            </button>
-          </div>
-        </div>
+      {/* Hero Gateway */}
+      <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+        <Image src="/logo.png" alt="LSPD Logo" width={240} height={240} priority />
+        <h1 style={{ fontSize: '4rem', margin: '30px 0 10px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          ZeroHour Command
+        </h1>
+        <p style={{ color: '#94a3b8', fontSize: '1.2rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}>
+          Tactical Operations Portal
+        </p>
+      </div>
 
+      {/* Action Row */}
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div className="glass-panel" style={{ width: '300px' }}>
+          <h3 style={{ margin: '0 0 10px 0' }}>Dispatch</h3>
+          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Monitor active unit status and real-time incident calls.</p>
+        </div>
+        <div className="glass-panel" style={{ width: '300px' }}>
+          <h3 style={{ margin: '0 0 10px 0' }}>Personnel</h3>
+          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Access the department roster and individual service records.</p>
+        </div>
       </div>
     </main>
   );
