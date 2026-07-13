@@ -31,3 +31,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.page-container {
+  padding-top: 120px; /* This pushes all page content below the navbar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
