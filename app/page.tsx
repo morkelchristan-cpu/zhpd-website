@@ -12,34 +12,48 @@ export default function Home() {
     }}>
       <Navbar />
 
-      <div style={{ textAlign: 'center', width: '100%', maxWidth: '600px', padding: '20px' }}>
-        <Image src="/logo.png" alt="Logo" width={200} height={200} style={{ margin: '0 auto' }} priority />
+      <div style={{ textAlign: 'center', width: '100%', maxWidth: '650px', padding: '20px' }}>
+        <Image src="/logo.png" alt="Logo" width={180} height={180} style={{ margin: '0 auto' }} priority />
         
-        <h1 style={{ fontSize: '2.5rem', margin: '20px 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-          ZeroHour Database
+        <h1 style={{ fontSize: '2.2rem', margin: '20px 0', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+          Tactical AI Assistant
         </h1>
 
-        {/* Professional Search Input */}
-        <div className="glass-effect" style={{ padding: '5px', borderRadius: '50px', display: 'flex', alignItems: 'center' }}>
+        {/* AI Input Field */}
+        <div className="glass-effect" style={{ 
+          padding: '8px', 
+          borderRadius: '12px', 
+          display: 'flex', 
+          alignItems: 'center',
+          border: '1px solid rgba(37, 99, 235, 0.4)' // Blue accent border
+        }}>
           <input 
             type="text" 
-            placeholder="Search incident reports, warrants, or personnel..." 
+            placeholder="Ask AI for unit deployment or incident analysis..." 
             style={{ 
-              width: '100%', background: 'transparent', border: 'none', padding: '15px 25px', 
+              width: '100%', background: 'transparent', border: 'none', padding: '15px 20px', 
               color: '#fff', fontSize: '1rem', outline: 'none' 
             }}
           />
           <button style={{ 
-            background: '#2563eb', border: 'none', padding: '10px 25px', 
-            borderRadius: '50px', color: '#fff', cursor: 'pointer', fontWeight: 'bold' 
+            background: '#2563eb', border: 'none', padding: '12px 25px', 
+            borderRadius: '8px', color: '#fff', cursor: 'pointer', fontWeight: '600' 
           }}>
-            QUERY
+            SEND
           </button>
         </div>
         
-        <p style={{ marginTop: '20px', color: '#94a3b8', fontSize: '0.8rem', letterSpacing: '0.2em' }}>
-          SECURE ACCESS GRANTED
-        </p>
+        {/* Quick Suggestion Chips */}
+        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
+          {['Analyze Incident', 'Deploy Units', 'Status Update'].map(tag => (
+            <span key={tag} style={{ 
+              fontSize: '0.75rem', padding: '5px 12px', borderRadius: '20px', 
+              background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer' 
+            }}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
     </main>
   );
