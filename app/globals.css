@@ -22,3 +22,12 @@
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Ensure the page content never slides under the navbar */
+.page-container {
+  padding-top: 100px; /* Adjust this value to match your nav height */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

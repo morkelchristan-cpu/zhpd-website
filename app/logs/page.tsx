@@ -1,19 +1,45 @@
+'use client';
+import { useEffect, useState } from 'react';
+
+interface IncidentLog {
+  id: number;
+  text: string;
+}
+
 export default function LogsPage() {
-  const logs = [
-    { id: '10-82', desc: 'Traffic Stop - Alta St', status: 'Resolved' },
-    { id: '10-99', desc: 'Officer Down - Sandy Shores', status: 'Urgent' }
-  ];
+  const [logs, setLogs] = useState<IncidentLog[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false); // Add this
+  const hasPermission = true; 
+
+  useEffect(() => {
+    const data = localStorage.getItem('incidentLogs');
+    if (data) {
+      try {
+        setLogs(JSON.parse(data));
+      } catch (e) {
+        console.error("Failed to parse logs", e);
+      }
+    }
+    setIsLoaded(true); // Mark as loaded
+  }, []);
+
+  if (!isLoaded) return null; // Wait for the component to mount fully
+  if (!hasPermission) return <div className="page-container">Access Denied: Command Clearance Required.</div>;
 
   return (
-    <main style={{ paddingTop: '120px', maxWidth: '900px', margin: '0 auto' }}>
-      <div className="glass-effect" style={{ padding: '40px' }}>
-        <h2 style={{ marginBottom: '30px', textTransform: 'uppercase' }}>Active Incident Logs</h2>
-        {logs.map(log => (
-          <div key={log.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '15px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-            <span>{log.id}: {log.desc}</span>
-            <span style={{ color: log.status === 'Urgent' ? '#ef4444' : '#22c55e' }}>{log.status}</span>
-          </div>
-        ))}
+    <main className="page-container">
+      <div className="glass-effect" style={{ width: '80%', maxWidth: '800px', padding: '40px' }}>
+        <h2 style={{ marginBottom: '20px' }}>COMMAND LOGS</h2>
+        
+        {logs.length === 0 ? (
+          <p style={{ color: '#64748b' }}>No active reports found.</p>
+        ) : (
+          logs.map((log) => (
+            <div key={log.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', padding: '15px 0' }}>
+              {log.text}
+            </div>
+          ))
+        )}
       </div>
     </main>
   );
