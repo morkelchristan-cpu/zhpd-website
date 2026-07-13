@@ -2,28 +2,19 @@
 import { useSession, signIn } from 'next-auth/react';
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
 
-  // If status is 'loading', show a brief message
-  if (status === 'loading') return <div style={{ color: 'white', textAlign: 'center', marginTop: '50px' }}>Loading...</div>;
+  if (status === 'loading') {
+    return <div style={{ color: 'white', textAlign: 'center', marginTop: '100px' }}>Authenticating...</div>;
+  }
 
-  // If unauthenticated, show the Login screen instead of hanging
-  if (status === 'unauthenticated') {
+  if (!session) {
     return (
-      <div style={{ textAlign: 'center', marginTop: '200px', color: 'white' }}>
+      <div style={{ textAlign: 'center', marginTop: '100px', color: 'white' }}>
         <h1>ZHPD Portal</h1>
-        <p>You must be logged in to access this site.</p>
         <button 
-          onClick={() => signIn('discord')} // This triggers the Discord redirect
-          style={{ 
-            padding: '12px 24px', 
-            fontSize: '16px', 
-            cursor: 'pointer',
-            backgroundColor: '#5865F2',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px'
-          }}
+          onClick={() => signIn('discord')} 
+          style={{ padding: '15px 30px', fontSize: '18px', cursor: 'pointer' }}
         >
           Login with Discord
         </button>
@@ -31,6 +22,5 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     );
   }
 
-  // If authenticated, show the site content
   return <>{children}</>;
 }
