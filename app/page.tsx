@@ -3,58 +3,30 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main className="animate-in" style={{ 
-      minHeight: '100vh', 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      justifyContent: 'center' 
-    }}>
+    <main className="scroll-container">
       <Navbar />
 
-      <div style={{ textAlign: 'center', width: '100%', maxWidth: '650px', padding: '20px' }}>
-        <Image src="/logo.png" alt="Logo" width={180} height={180} style={{ margin: '0 auto' }} priority />
-        
-        <h1 style={{ fontSize: '2.2rem', margin: '20px 0', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
-          Tactical AI Assistant
-        </h1>
+      {/* Hero Section */}
+      <section className="scroll-section">
+        <div style={{ textAlign: 'center' }}>
+          <Image src="/logo.png" alt="LSPD Logo" width={250} height={250} priority />
+          <h1 style={{ fontSize: '3rem', margin: '20px 0 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+            LSPD Portal
+          </h1>
+        </div>
+      </section>
 
-        {/* AI Input Field */}
-        <div className="glass-effect" style={{ 
-          padding: '8px', 
-          borderRadius: '12px', 
-          display: 'flex', 
-          alignItems: 'center',
-          border: '1px solid rgba(37, 99, 235, 0.4)' // Blue accent border
-        }}>
-          <input 
-            type="text" 
-            placeholder="Ask AI for unit deployment or incident analysis..." 
-            style={{ 
-              width: '100%', background: 'transparent', border: 'none', padding: '15px 20px', 
-              color: '#fff', fontSize: '1rem', outline: 'none' 
-            }}
-          />
-          <button style={{ 
-            background: '#2563eb', border: 'none', padding: '12px 25px', 
-            borderRadius: '8px', color: '#fff', cursor: 'pointer', fontWeight: '600' 
-          }}>
-            SEND
-          </button>
+      {/* Information Section */}
+      <section className="scroll-section">
+        <div className="glass-effect" style={{ width: '80%', maxWidth: '800px', padding: '50px' }}>
+          <h2 style={{ marginBottom: '20px' }}>DEPARTMENT INFORMATION</h2>
+          <p style={{ color: '#94a3b8', lineHeight: '1.8' }}>
+            The Los Santos Police Department is an elite law enforcement agency. 
+            This portal serves as the central hub for officer communications, 
+            incident documentation, and tactical coordination.
+          </p>
         </div>
-        
-        {/* Quick Suggestion Chips */}
-        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '10px' }}>
-          {['Analyze Incident', 'Deploy Units', 'Status Update'].map(tag => (
-            <span key={tag} style={{ 
-              fontSize: '0.75rem', padding: '5px 12px', borderRadius: '20px', 
-              background: 'rgba(255,255,255,0.05)', color: '#94a3b8', cursor: 'pointer' 
-            }}>
-              {tag}
-            </span>
-          ))}
-        </div>
-      </div>
+      </section>
     </main>
   );
 }

@@ -67,3 +67,26 @@ span:hover {
   color: #fff !important;
   transition: all 0.3s ease;
 }
+
+/* Enable Scroll Snapping */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.scroll-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass effect for panels */
+.glass-effect {
+  background: rgba(20, 20, 25, 0.85);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
