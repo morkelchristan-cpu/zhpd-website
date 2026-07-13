@@ -1,22 +1,16 @@
-'use client';
-
-import { SessionProvider } from "next-auth/react";
+import Providers from "@/src/components/Providers";
 import AuthGuard from "@/src/components/AuthGuard";
-import "./globals.css"; // Ensure your global styles are imported here
+import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider>
+        <Providers>
           <AuthGuard>
             {children}
           </AuthGuard>
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
