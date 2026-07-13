@@ -57,12 +57,12 @@ html {
 
 /* Police Accent Hover Effect */
 .glass-panel {
-  border-top: 1px solid rgba(59, 130, 246, 0.3);
+  border-top: 1px solid rgba(59, 131, 246, 0);
   transition: all 0.4s ease;
 }
 
 .glass-panel:hover {
-  border-top: 4px solid #3b82f6; /* Flash of blue on hover */
+  border-top: 4px solid #3b83f600; /* Flash of blue on hover */
   transform: translateY(-5px);
 }
 
@@ -73,5 +73,5 @@ html {
   gap: 20px;
 }
 .glass-panel {
-  border-left: 4px solid #3b82f6; 
+  border-left: 4px solid #3b83f600; 
 }
