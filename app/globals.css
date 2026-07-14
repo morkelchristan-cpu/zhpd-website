@@ -58,3 +58,12 @@ html {
   transform: translateY(-5px);
   border-color: rgba(59, 130, 246, 0.5);
 }
+html { scroll-behavior: smooth; }
+body { background: #020617; color: white; margin: 0; }
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
