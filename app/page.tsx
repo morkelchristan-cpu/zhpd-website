@@ -19,7 +19,7 @@ const SECTIONS = [
     id: 'jurisdiction', 
     title: 'Operational Jurisdiction', 
     content: 'The LSPD operates strictly within its designated borders. Maintaining clear knowledge of the State of San Andreas, Los Santos County, and Blaine County jurisdictions is mandatory for all personnel. Understanding these boundaries ensures legal compliance during pursuits, scene management, and inter-agency coordination.', 
-    img: '/jurisdriction.png', // Updated to match your file
+    img: '/jurisdriction.png', 
     isMap: true 
   },
   { 
@@ -57,6 +57,7 @@ const SECTIONS = [
 export default function HomePage() {
   return (
     <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden' }}>
+      {/* Hero Section */}
       <motion.section 
         id="home" 
         initial={{ opacity: 0 }} 
@@ -64,6 +65,14 @@ export default function HomePage() {
         transition={{ duration: 1.5 }}
         style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
       >
+        <motion.img 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          src="/logo.png" 
+          alt="LSPD Logo" 
+          style={{ width: '150px', marginBottom: '20px' }} 
+        />
         <motion.h1 
           initial={{ y: 50 }} 
           animate={{ y: 0 }} 
@@ -76,6 +85,7 @@ export default function HomePage() {
         <p style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5em', marginTop: '1rem' }}>Command & Control Infrastructure</p>
       </motion.section>
 
+      {/* Dynamic Sections */}
       {SECTIONS.map((sec) => (
         <motion.section 
           key={sec.id} 
@@ -89,12 +99,10 @@ export default function HomePage() {
           <div className="glass-card" style={{ maxWidth: '1000px', width: '100%', borderLeft: '4px solid #3b82f6' }}>
             <h2 className="gradient-text" style={{ fontSize: '3rem', marginBottom: '30px' }}>{sec.title}</h2>
             
-            {/* Standard Image Render */}
             {sec.img && !sec.isMap && (
               <img src={sec.img} alt={sec.title} style={{ width: '100%', borderRadius: '20px', marginBottom: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
             )}
             
-            {/* Jurisdiction Map Render */}
             {sec.isMap && (
               <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                 <img src={sec.img} alt="Jurisdiction Map" style={{ width: '100%', maxWidth: '500px', borderRadius: '16px', border: '2px solid #3b82f6', boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' }} />
