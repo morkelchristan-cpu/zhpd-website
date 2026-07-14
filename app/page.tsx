@@ -7,13 +7,13 @@ const SECTIONS = [
     id: 'about', 
     title: 'Department Mission', 
     content: 'The Los Santos Police Department (LSPD) is built on the pillars of integrity, tactical precision, and community trust. Our mission is to serve as a beacon of order in the heart of Los Santos. From high-speed pursuit management to complex investigations, every officer undergoes rigorous training to handle the city’s evolving threats. We operate not just as law enforcement, but as a community partner, ensuring that civilian safety is prioritized alongside tactical dominance.', 
-    img: 'https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?auto=format&fit=crop&q=80&w=1200' 
+    img: 'https://i.postimg.cc/3RRvzTZm/image-2026-07-15-001327520.png' 
   },
   { 
     id: 'divisions', 
     title: 'Elite Tactical Divisions', 
     content: 'Our organizational structure is designed for agility and rapid response. The Criminal Investigation Division (CID) spearheads undercover operations. Our S.W.A.T unit is the tactical anchor, equipped for high-risk hostage extraction. Meanwhile, our Air One division maintains total situational awareness from above, providing real-time data to ground units. Each division is held to the highest standard of departmental excellence.', 
-    img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=1200' 
+    img: 'https://i.postimg.cc/jSbvmDnZ/image-2026-07-15-001507772.png' 
   },
   { 
     id: 'jurisdiction', 
