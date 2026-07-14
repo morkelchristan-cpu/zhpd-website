@@ -11,7 +11,6 @@ export default function RosterPage() {
         margin: '0 auto', 
         padding: '0 20px' 
       }}>
-        
         <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>Department Resources</h1>
         <p style={{ fontSize: '1.2rem', marginBottom: '60px', maxWidth: '800px' }}>
           Access official personnel records, standard operating procedures, and operational documentation.
