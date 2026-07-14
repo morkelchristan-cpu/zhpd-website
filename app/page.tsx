@@ -56,7 +56,7 @@ const SECTIONS = [
 
 export default function HomePage() {
   return (
-    <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden' }}>
+    <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden', minHeight: '100vh' }}>
       {/* Hero Section */}
       <motion.section 
         id="home" 
@@ -94,7 +94,7 @@ export default function HomePage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ padding: '120px 20px', display: 'flex', justifyContent: 'center' }}
+          style={{ padding: '40px 20px', display: 'flex', justifyContent: 'center' }}
         >
           <div className="glass-card" style={{ maxWidth: '1000px', width: '100%', borderLeft: '4px solid #3b82f6' }}>
             <h2 className="gradient-text" style={{ fontSize: '3rem', marginBottom: '30px' }}>{sec.title}</h2>
