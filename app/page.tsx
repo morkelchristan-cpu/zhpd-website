@@ -3,51 +3,54 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const SECTIONS = [
-  /* ... (Your existing SECTIONS array remains exactly the same) ... */
-  {
-    id: 'about',
-    title: 'Department Mission',
-    content: 'The Los Santos Police Department (LSPD) is built on the pillars of integrity, tactical precision, and community trust. Our mission is to serve as a beacon of order in the heart of Los Santos. From high-speed pursuit management to complex investigations, every officer undergoes rigorous training to handle the city’s evolving threats. We operate not just as law enforcement, but as a community partner, ensuring that civilian safety is prioritized alongside tactical dominance.',
-    img: 'https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?auto=format&fit=crop&q=80&w=1200'
+  { 
+    id: 'about', 
+    title: 'Department Mission', 
+    content: 'The Los Santos Police Department (LSPD) is built on the pillars of integrity, tactical precision, and community trust. Our mission is to serve as a beacon of order in the heart of Los Santos. From high-speed pursuit management to complex investigations, every officer undergoes rigorous training to handle the city’s evolving threats. We operate not just as law enforcement, but as a community partner, ensuring that civilian safety is prioritized alongside tactical dominance.', 
+    img: 'https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?auto=format&fit=crop&q=80&w=1200' 
   },
-  {
-    id: 'divisions',
-    title: 'Elite Tactical Divisions',
-    content: 'Our organizational structure is designed for agility and rapid response. The Criminal Investigation Division (CID) spearheads undercover operations. Our S.W.A.T unit is the tactical anchor, equipped for high-risk hostage extraction. Meanwhile, our Air One division maintains total situational awareness from above, providing real-time data to ground units. Each division is held to the highest standard of departmental excellence.',
-    img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=1200'
+  { 
+    id: 'divisions', 
+    title: 'Elite Tactical Divisions', 
+    content: 'Our organizational structure is designed for agility and rapid response. The Criminal Investigation Division (CID) spearheads undercover operations. Our S.W.A.T unit is the tactical anchor, equipped for high-risk hostage extraction. Meanwhile, our Air One division maintains total situational awareness from above, providing real-time data to ground units. Each division is held to the highest standard of departmental excellence.', 
+    img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=1200' 
   },
-  {
-    id: 'roster',
-    title: 'Officer Roster',
-    content: 'The LSPD Roster is a live-tracking document of our active-duty force. It details call-signs, rank tiers, and certification levels. Command staff utilize this roster to manage shift rotations and field assignments. Accuracy is paramount; all personnel are required to report duty status changes immediately. Unauthorized modifications are treated as a breach of internal security.',
-    img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98a2ca?auto=format&fit=crop&q=80&w=1200'
+  { 
+    id: 'roster', 
+    title: 'Officer Roster', 
+    content: 'The LSPD Roster is a live-tracking document of our active-duty force. It details call-signs, rank tiers, and certification levels. Command staff utilize this roster to manage shift rotations and field assignments. Accuracy is paramount; all personnel are required to report duty status changes immediately. Unauthorized modifications are treated as a breach of internal security.', 
+    links: [
+      { text: 'VIEW LIVE ROSTER', url: 'https://docs.google.com/spreadsheets/d/1AZavVnTxOkl-jmctN5CBoLfG_6zqqBYs0z9-rv8F8tQ/edit?gid=1264692443#gid=1264692443' },
+      { text: 'RANK REQUIREMENTS', url: 'https://docs.google.com/document/d/1biLXFqBhmG4cGRIiE0niBOFF0ldWZzxE2tqb7e73k78/edit?usp=sharing' }
+    ],
+    img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98a2ca?auto=format&fit=crop&q=80&w=1200' 
   },
-  {
-    id: 'ai',
-    title: 'Tactical AI Assistant',
-    content: 'Need real-time procedural guidance or penal code verification? Our Tactical AI is ready to assist. It is fully integrated with LSPD databases to provide immediate, compliant answers for officers in the field.',
-    link: '/ai',
-    buttonText: 'ACCESS AI TERMINAL'
+  { 
+    id: 'ai', 
+    title: 'Tactical AI Assistant', 
+    content: 'Need real-time procedural guidance or penal code verification? Our Tactical AI is ready to assist. It is fully integrated with LSPD databases to provide immediate, compliant answers for officers in the field.', 
+    link: '/ai', 
+    buttonText: 'ACCESS AI TERMINAL' 
   },
-  {
-    id: 'reports',
-    title: 'Tactical Reporting Portal',
-    content: 'This portal serves as the official repository for all incident reports. Whether filing a traffic citation or a major felony statement, this form ensures your data reaches Command securely. Please be thorough in your descriptions; detail time of incident, suspects involved, and units responding.',
-    isForm: true
+  { 
+    id: 'reports', 
+    title: 'Tactical Reporting Portal', 
+    content: 'This portal serves as the official repository for all incident reports. Whether filing a traffic citation or a major felony statement, this form ensures your data reaches Command securely. Please be thorough in your descriptions; detail time of incident, suspects involved, and units responding.', 
+    isForm: true 
   },
-  {
-    id: 'logs',
-    title: 'Command Logs',
-    content: 'The Command Logs contain the secure history of all processed reports and sensitive internal activity. This section is strictly for personnel with the correct clearance levels. Authorized access only.',
-    link: '/logs',
-    buttonText: 'ENTER SECURE LOGS'
+  { 
+    id: 'logs', 
+    title: 'Command Logs', 
+    content: 'The Command Logs contain the secure history of all processed reports and sensitive internal activity. This section is strictly for personnel with the correct clearance levels. Authorized access only.', 
+    link: '/logs', 
+    buttonText: 'ENTER SECURE LOGS' 
   }
 ];
 
 export default function HomePage() {
   return (
     <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden' }}>
-      {/* Hero Section with Entrance Animation */}
+      {/* Hero Section */}
       <motion.section 
         id="home" 
         initial={{ opacity: 0 }} 
@@ -67,7 +70,7 @@ export default function HomePage() {
         <p style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5em', marginTop: '1rem' }}>Command & Control Infrastructure</p>
       </motion.section>
 
-      {/* Dynamic Sections with Scroll Animation */}
+      {/* Dynamic Sections */}
       {SECTIONS.map((sec) => (
         <motion.section 
           key={sec.id} 
@@ -106,7 +109,25 @@ export default function HomePage() {
               </div>
             )}
 
-            {sec.link && (
+            {/* Render Multiple Links for Roster */}
+            {sec.links && (
+              <div style={{ display: 'flex', gap: '15px' }}>
+                {sec.links.map((link, idx) => (
+                  <a key={idx} href={link.url} target="_blank" style={{ textDecoration: 'none' }}>
+                    <motion.button 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      style={{ padding: '15px 30px', background: 'transparent', border: '1px solid #60a5fa', color: '#60a5fa', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
+                    >
+                      {link.text}
+                    </motion.button>
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {/* Render Single Link for AI/Logs */}
+            {sec.link && !sec.links && (
               <Link href={sec.link} style={{ textDecoration: 'none' }}>
                 <motion.button 
                   whileHover={{ scale: 1.05 }}
