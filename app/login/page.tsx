@@ -1,34 +1,56 @@
 'use client';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
-  const [callsign, setCallsign] = useState('');
-  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate authentication
-    localStorage.setItem('user_session', 'active');
-    router.push('/'); // Send them to the main portal after login
+  // NOTE: Replace these placeholders with your actual Discord application details
+  // from the Discord Developer Portal.
+  const CLIENT_ID = '1526288087095705680';
+  const REDIRECT_URI = encodeURIComponent('http://192.168.110.157:3000/api/auth/callback/discord');
+  const DISCORD_AUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=identify`;
+
+  const handleDiscordLogin = () => {
+    setLoading(true);
+    window.location.href = DISCORD_AUTH_URL;
   };
 
   return (
-    <main style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#020617' }}>
-      <div className="glass-card" style={{ maxWidth: '400px', width: '100%', textAlign: 'center' }}>
-        <h1 className="gradient-text" style={{ fontSize: '2rem', marginBottom: '20px' }}>LSPD ACCESS</h1>
-        <form onSubmit={handleLogin}>
-          <input 
-            type="text" 
-            placeholder="Enter Callsign / Badge ID" 
-            value={callsign}
-            onChange={(e) => setCallsign(e.target.value)}
-            style={{ width: '100%', padding: '15px', marginBottom: '20px', borderRadius: '8px', border: '1px solid #334', background: 'transparent', color: '#fff' }}
-          />
-          <button type="submit" style={{ width: '100%', padding: '15px', background: '#3b82f6', border: 'none', borderRadius: '8px', color: '#fff', fontWeight: 'bold', cursor: 'pointer' }}>
-            AUTHENTICATE
-          </button>
-        </form>
+    <main style={{ 
+      height: '100vh', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      background: '#020617' 
+    }}>
+      <div className="glass-card" style={{ 
+        maxWidth: '400px', 
+        width: '100%', 
+        textAlign: 'center',
+        padding: '48px' 
+      }}>
+        <h1 className="gradient-text" style={{ fontSize: '2rem', marginBottom: '16px' }}>LSPD ACCESS</h1>
+        <p style={{ color: '#94a3b8', marginBottom: '32px', fontSize: '0.9rem' }}>
+          Secure Command & Control Portal. Authenticate via Discord to proceed.
+        </p>
+        
+        <button 
+          onClick={handleDiscordLogin} 
+          disabled={loading}
+          style={{ 
+            width: '100%', 
+            padding: '16px', 
+            background: '#5865F2', 
+            border: 'none', 
+            borderRadius: '12px', 
+            color: '#fff', 
+            fontWeight: '600', 
+            cursor: 'pointer',
+            transition: 'opacity 0.2s'
+          }}
+        >
+          {loading ? 'REDIRECTING...' : 'LOGIN WITH DISCORD'}
+        </button>
       </div>
     </main>
   );
