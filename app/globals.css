@@ -1,24 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;700&display=swap');
 
-/* --- The Universal Reset (Fixes side white lines) --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-/* Add this to the very top of src/app/globals.css */
+/* --- Universal Reset --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  background-color: #020617 !important; /* Force dark background */
-  color: #f8fafc;
-  min-height: 100vh;
-}
-/* --- CSS Variables --- */
 :root {
   --bg-dark: #020617;
   --bg-card: rgba(15, 23, 42, 0.6);
@@ -28,18 +16,23 @@ body {
   --text-dim: #94a3b8;
 }
 
-/* --- Base Resets --- */
 html { 
   scroll-behavior: smooth; 
   background-color: var(--bg-dark);
 }
 
 body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-dark) !important;
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* --- Premium Glassmorphism --- */
@@ -50,8 +43,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 32px;
   padding: 48px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 40px auto; /* Centers the block with vertical spacing */
+  max-width: 1000px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
@@ -59,7 +54,7 @@ body {
   transform: translateY(-8px);
 }
 
-/* --- Typography Aesthetics --- */
+/* --- Typography --- */
 h1, h2, h3 { 
   font-family: 'Outfit', sans-serif; 
   letter-spacing: -0.03em;
@@ -113,29 +108,4 @@ textarea, input {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-/* Force dark background everywhere */
-body {
-  background-color: #020617 !important;
-  color: #f8fafc !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Ensure the main container doesn't have stray margins */
-main {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* Redefine your glass card to ensure it looks like a block */
-.glass-card {
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 32px;
-  padding: 48px;
-  margin: 20px auto; /* Centers the block */
-  max-width: 1000px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
