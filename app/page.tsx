@@ -16,6 +16,13 @@ const SECTIONS = [
     img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=1200' 
   },
   { 
+    id: 'jurisdiction', 
+    title: 'Operational Jurisdiction', 
+    content: 'The LSPD operates strictly within its designated borders. Maintaining clear knowledge of the State of San Andreas, Los Santos County, and Blaine County jurisdictions is mandatory for all personnel. Understanding these boundaries ensures legal compliance during pursuits, scene management, and inter-agency coordination.', 
+    img: '/map.png', // Ensure your map file is named map.png in your 'public' folder
+    isMap: true 
+  },
+  { 
     id: 'roster', 
     title: 'Officer Roster', 
     content: 'The LSPD Roster is a live-tracking document of our active-duty force. It details call-signs, rank tiers, and certification levels. Command staff utilize this roster to manage shift rotations and field assignments. Accuracy is paramount; all personnel are required to report duty status changes immediately. Unauthorized modifications are treated as a breach of internal security.', 
@@ -50,7 +57,6 @@ const SECTIONS = [
 export default function HomePage() {
   return (
     <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden' }}>
-      {/* Hero Section */}
       <motion.section 
         id="home" 
         initial={{ opacity: 0 }} 
@@ -70,7 +76,6 @@ export default function HomePage() {
         <p style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5em', marginTop: '1rem' }}>Command & Control Infrastructure</p>
       </motion.section>
 
-      {/* Dynamic Sections */}
       {SECTIONS.map((sec) => (
         <motion.section 
           key={sec.id} 
@@ -84,8 +89,16 @@ export default function HomePage() {
           <div className="glass-card" style={{ maxWidth: '1000px', width: '100%', borderLeft: '4px solid #3b82f6' }}>
             <h2 className="gradient-text" style={{ fontSize: '3rem', marginBottom: '30px' }}>{sec.title}</h2>
             
-            {sec.img && (
+            {/* Standard Image Render */}
+            {sec.img && !sec.isMap && (
               <img src={sec.img} alt={sec.title} style={{ width: '100%', borderRadius: '20px', marginBottom: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }} />
+            )}
+            
+            {/* Jurisdiction Map Render */}
+            {sec.isMap && (
+              <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                <img src={sec.img} alt="Jurisdiction Map" style={{ width: '100%', maxWidth: '500px', borderRadius: '16px', border: '2px solid #3b82f6', boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' }} />
+              </div>
             )}
             
             <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: '#cbd5e1', textAlign: 'justify', marginBottom: '30px' }}>
@@ -109,7 +122,6 @@ export default function HomePage() {
               </div>
             )}
 
-            {/* Render Multiple Links for Roster */}
             {sec.links && (
               <div style={{ display: 'flex', gap: '15px' }}>
                 {sec.links.map((link, idx) => (
@@ -126,7 +138,6 @@ export default function HomePage() {
               </div>
             )}
 
-            {/* Render Single Link for AI/Logs */}
             {sec.link && !sec.links && (
               <Link href={sec.link} style={{ textDecoration: 'none' }}>
                 <motion.button 
