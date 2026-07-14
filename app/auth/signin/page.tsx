@@ -1,6 +1,7 @@
 'use client';
 import { signIn } from "next-auth/react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function SignIn() {
   return (
@@ -14,7 +15,7 @@ export default function SignIn() {
         className="glass-card"
         style={{ textAlign: 'center', padding: '60px', maxWidth: '400px' }}
       >
-        <img src="/logo.png" alt="LSPD Logo" style={{ width: '100px', marginBottom: '20px' }} />
+        <Image src="public/logo.png" alt="LSPD Logo" width={100} height={100} style={{ marginBottom: '20px' }} />
         <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '10px' }}>ACCESS GRANTED</h1>
         <p style={{ color: '#94a3b8', marginBottom: '40px' }}>Authenticate via Discord to access the LSPD Portal.</p>
         
