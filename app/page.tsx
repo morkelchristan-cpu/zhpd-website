@@ -19,7 +19,7 @@ const SECTIONS = [
     id: 'jurisdiction', 
     title: 'Operational Jurisdiction', 
     content: 'The LSPD operates strictly within its designated borders. Maintaining clear knowledge of the State of San Andreas, Los Santos County, and Blaine County jurisdictions is mandatory for all personnel. Understanding these boundaries ensures legal compliance during pursuits, scene management, and inter-agency coordination.', 
-    img: '/map.png', // Ensure your map file is named map.png in your 'public' folder
+    img: '/jurisdriction.png', // Updated to match your file
     isMap: true 
   },
   { 
