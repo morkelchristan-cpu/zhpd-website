@@ -6,7 +6,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Add this to the very top of src/app/globals.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  background-color: #020617 !important; /* Force dark background */
+  color: #f8fafc;
+  min-height: 100vh;
+}
 /* --- CSS Variables --- */
 :root {
   --bg-dark: #020617;
