@@ -1,44 +1,75 @@
 'use client';
-import Navbar from '@/src/components/Navbar';
+import Link from 'next/link';
+
+const SECTIONS = [
+  {
+    id: 'about',
+    title: 'Mission Integrity',
+    content: 'The LSPD operates as the heartbeat of Los Santos. Our commitment to law and order is non-negotiable. Every officer is an extension of our collective promise to serve. This section outlines our core values, the history of our precinct, and the tactical ethos we uphold daily. Stand tall, act with honor, and remember—your actions define the legacy of this department.',
+    img: 'https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'divisions',
+    title: 'Tactical Division Overview',
+    content: 'Knowledge is power. Whether you are operating within CID, S.W.A.T., or HPU, knowing your division’s role is critical to mission success. Here you will find the specific SOPs, gear requirements, and deployment protocols for each unit. Elite performance is the standard; ensure your division knowledge is up to date to maintain tactical superiority in the field.',
+    img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'roster',
+    title: 'Official Officer Roster',
+    content: 'The Roster is the ultimate indicator of force readiness. Verified call-signs and rank statuses are updated in real-time. Command monitors this ledger to ensure every patrol, SWAT intervention, and aerial patrol is properly staffed. If your status is outdated, report to HR immediately. This is the pulse of our workforce.',
+    img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98a2ca?auto=format&fit=crop&q=80&w=1200'
+  },
+  {
+    id: 'ai',
+    title: 'Tactical AI Assistant',
+    content: 'When seconds count, the Tactical AI is your force multiplier. Designed to process legal inquiries, procedural questions, and tactical data on the fly, this tool is available 24/7. Don\'t guess—verify. Optimize your decision-making in the field with the most advanced processing unit in the LSPD.',
+    link: '/ai',
+    buttonText: 'INITIALIZE AI TERMINAL'
+  },
+  {
+    id: 'reports',
+    title: 'Incident Reporting Engine',
+    content: 'Precision in documentation is the hallmark of a great officer. Use the portal below to file reports. Every detail—from the time of day to suspect descriptors—is ingested into the Command database. Your reports form the evidence that builds our cases. Do your duty; document thoroughly.',
+    isForm: true
+  },
+  {
+    id: 'logs',
+    title: 'Command Logs',
+    content: 'Restricted area. Secure incident streams, administrative logs, and internal department communications are housed here. Access is strictly limited to verified Command personnel. Integrity in your clearance is the foundation of departmental security.',
+    link: '/logs',
+    buttonText: 'ACCESS SECURE STREAM'
+  }
+];
 
 export default function HomePage() {
-  const sections = [
-    { 
-      id: 'about', 
-      title: 'Department Mission & History', 
-      content: `The Los Santos Police Department (LSPD) serves as the primary law enforcement agency, dedicated to the protection of life and property. Founded on the principles of integrity, honor, and tactical precision, our mission extends beyond mere enforcement. We engage in community policing, proactive crime reduction, and rapid emergency response. Our history is marked by a relentless pursuit of justice, evolving from traditional patrol methods to modern, data-driven policing. We pride ourselves on maintaining order in a city of millions, ensuring that every citizen feels secure regardless of the sector.`, 
-      img: 'https://images.unsplash.com/photo-1544750040-4ea9b8a27d38?auto=format&fit=crop&q=80&w=800' 
-    },
-    { 
-      id: 'divisions', 
-      title: 'Elite Tactical Divisions', 
-      content: `LSPD operates under a tiered hierarchy of specialized units. The 'Criminal Investigation Division' (CID) focuses on long-term narcotics and racketeering cases. Our 'S.W.A.T' teams are the tip of the spear, trained in high-risk hostage rescue and barricaded suspect apprehension. 'Air One' provides constant aerial surveillance, ensuring that patrol units on the ground have the tactical advantage. Furthermore, our 'High Patrol Unit' (HPU) maintains order on the arterial highways of Los Santos, focusing on high-speed pursuit management and intersection safety.`, 
-      img: 'https://images.unsplash.com/photo-1505636683637-293699c264c7?auto=format&fit=crop&q=80&w=800' 
-    },
-    { 
-      id: 'roster', 
-      title: 'Command & Personnel Roster', 
-      content: `Maintaining a transparent and accurate roster is vital for chain-of-command operations. All active-duty personnel are indexed by call sign, rank, and departmental certification. Command personnel are responsible for the oversight of daily operations, ensuring that the 'Standard Operating Procedures' (SOPs) are followed by every officer. Roster integrity is checked daily at the start of every shift (Roll Call). Discrepancies in call sign status or rank accreditation are subject to Internal Affairs (IA) review to maintain the high standards of the LSPD.`, 
-      img: 'https://images.unsplash.com/photo-1582213782179-e0d53f98a2ca?auto=format&fit=crop&q=80&w=800' 
-    }
-  ];
-
   return (
-    <main style={{ background: '#020617', color: '#fff', scrollBehavior: 'smooth' }}>
-      <Navbar />
-      
+    <main style={{ background: '#020617', color: '#f8fafc', paddingBottom: '100px' }}>
       {/* Hero Section */}
       <section id="home" style={{ height: '90vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-        <h1 className="gradient-text" style={{ fontSize: '5rem' }}>LSPD PORTAL</h1>
+        <h1 className="gradient-text" style={{ fontSize: '6rem', marginBottom: '1rem', textAlign: 'center' }}>LSPD PORTAL</h1>
+        <p style={{ color: '#94a3b8', letterSpacing: '0.5em', textTransform: 'uppercase' }}>Command & Control Infrastructure</p>
       </section>
 
-      {/* Dynamic Content Sections */}
-      {sections.map((sec) => (
-        <section key={sec.id} id={sec.id} style={{ padding: '100px 20px', maxWidth: '1000px', margin: 'auto' }}>
-          <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h2 className="gradient-text" style={{ fontSize: '2.5rem' }}>{sec.title}</h2>
-            <img src={sec.img} alt={sec.title} style={{ borderRadius: '16px', width: '100%', maxHeight: '400px', objectFit: 'cover' }} />
-            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#cbd5e1', textAlign: 'justify' }}>{sec.content}</p>
+      {/* Sections */}
+      {SECTIONS.map((sec) => (
+        <section key={sec.id} id={sec.id} style={{ padding: '100px 20px', display: 'flex', justifyContent: 'center' }}>
+          <div className="glass-card" style={{ maxWidth: '900px', width: '100%', borderLeft: '4px solid #3b82f6' }}>
+            <h2 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '25px' }}>{sec.title}</h2>
+            {sec.img && <img src={sec.img} alt={sec.title} style={{ width: '100%', borderRadius: '16px', marginBottom: '30px', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }} />}
+            <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#cbd5e1', marginBottom: '30px' }}>{sec.content}</p>
+            
+            {sec.isForm && (
+              <div style={{ background: 'rgba(0,0,0,0.4)', padding: '30px', borderRadius: '16px' }}>
+                <textarea placeholder="File detailed report..." style={{ width: '100%', height: '150px', background: 'transparent', border: '1px solid #334', color: '#fff', padding: '15px', borderRadius: '8px' }} />
+                <button style={{ marginTop: '15px', padding: '12px 30px', background: '#3b82f6', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>SUBMIT</button>
+              </div>
+            )}
+            {sec.link && (
+              <Link href={sec.link} style={{ textDecoration: 'none' }}>
+                <button style={{ padding: '15px 30px', background: 'transparent', border: '1px solid #60a5fa', color: '#60a5fa', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>{sec.buttonText}</button>
+              </Link>
+            )}
           </div>
         </section>
       ))}
