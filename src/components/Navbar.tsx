@@ -6,19 +6,13 @@ export default function Navbar() {
   const router = useRouter();
 
   const handleLogout = () => {
-    // 1. SECURE SESSION TERMINATION
-    // Remove all persistent tokens or user data stored in the browser
+    // 1. Terminate Session
     localStorage.removeItem('user_session');
-    localStorage.removeItem('user_role');
     
-    // Optional: If you use cookies, you would clear them here via an API call
-    
-    // 2. IMMEDIATE REDIRECT
-    // Force the browser to refresh the state and move to the login page
-    router.push('/login');
-    
-    // Force a reload if necessary to clear any lingering client-side state
-    window.location.reload();
+    // 2. Force Redirect to Login
+    // Using window.location.href forces a full page reload, 
+    // which is the most reliable way to clear client-side state.
+    window.location.href = '/login';
   };
 
   const links = [
@@ -34,45 +28,40 @@ export default function Navbar() {
   return (
     <nav style={{ 
       position: 'fixed', top: 0, width: '100%', padding: '20px 40px', 
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', // Changed to center
       background: 'rgba(2, 6, 23, 0.8)', backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(255, 255, 255, 0.05)', zIndex: 1000 
     }}>
-      <div style={{ flex: 1 }} />
-      
-      {/* Central Navigation Links */}
+      {/* Navigation Links */}
       <div style={{ display: 'flex', gap: '30px' }}>
         {links.map((l) => (
           <Link key={l.name} href={l.path} style={{ 
             color: '#94a3b8', textDecoration: 'none', fontSize: '0.75rem', 
-            textTransform: 'uppercase', letterSpacing: '0.2em', transition: 'color 0.3s' 
+            textTransform: 'uppercase', letterSpacing: '0.2em' 
           }}>
             {l.name}
           </Link>
         ))}
       </div>
 
-      {/* Logout Action */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-        <button 
-          onClick={handleLogout} 
-          style={{ 
-            background: 'transparent', 
-            border: '1px solid #ef4444', 
-            color: '#ef4444',
-            padding: '6px 16px', 
-            borderRadius: '4px', 
-            fontSize: '0.7rem', 
-            cursor: 'pointer', 
-            textTransform: 'uppercase',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseOver={(e) => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = '#fff'; }}
-          onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#ef4444'; }}
-        >
-          LOGOUT
-        </button>
-      </div>
+      {/* Logout Button: Moved closer to the links by removing flex spacer */}
+      <button 
+        onClick={handleLogout} 
+        style={{ 
+          marginLeft: '40px', // Pulls button left, closer to the links
+          background: 'transparent', 
+          border: '1px solid #ef4444', 
+          color: '#ef4444',
+          padding: '6px 16px', 
+          borderRadius: '4px', 
+          fontSize: '0.7rem', 
+          cursor: 'pointer', 
+          textTransform: 'uppercase',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        LOGOUT
+      </button>
     </nav>
   );
 }
