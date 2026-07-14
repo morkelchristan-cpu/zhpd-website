@@ -1,8 +1,9 @@
 'use client';
-import { useState } from 'react';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const SECTIONS = [
+  /* ... (Your existing SECTIONS array remains exactly the same) ... */
   {
     id: 'about',
     title: 'Department Mission',
@@ -46,15 +47,37 @@ const SECTIONS = [
 export default function HomePage() {
   return (
     <main style={{ background: '#020617', color: '#f8fafc', overflowX: 'hidden' }}>
-      {/* Hero Section */}
-      <section id="home" style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <h1 className="gradient-text" style={{ fontSize: '6rem', margin: 0 }}>LSPD PORTAL</h1>
+      {/* Hero Section with Entrance Animation */}
+      <motion.section 
+        id="home" 
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1.5 }}
+        style={{ height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
+      >
+        <motion.h1 
+          initial={{ y: 50 }} 
+          animate={{ y: 0 }} 
+          transition={{ type: 'spring', stiffness: 50 }}
+          className="gradient-text" 
+          style={{ fontSize: '6rem', margin: 0 }}
+        >
+          LSPD PORTAL
+        </motion.h1>
         <p style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5em', marginTop: '1rem' }}>Command & Control Infrastructure</p>
-      </section>
+      </motion.section>
 
-      {/* Dynamic Sections */}
+      {/* Dynamic Sections with Scroll Animation */}
       {SECTIONS.map((sec) => (
-        <section key={sec.id} id={sec.id} style={{ padding: '120px 20px', display: 'flex', justifyContent: 'center' }}>
+        <motion.section 
+          key={sec.id} 
+          id={sec.id}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ padding: '120px 20px', display: 'flex', justifyContent: 'center' }}
+        >
           <div className="glass-card" style={{ maxWidth: '1000px', width: '100%', borderLeft: '4px solid #3b82f6' }}>
             <h2 className="gradient-text" style={{ fontSize: '3rem', marginBottom: '30px' }}>{sec.title}</h2>
             
@@ -72,24 +95,30 @@ export default function HomePage() {
                   placeholder="Enter incident description, suspect details, and responding units here..." 
                   style={{ width: '100%', height: '200px', background: 'transparent', border: '1px solid #334', borderRadius: '12px', color: '#fff', padding: '20px', fontSize: '1rem' }} 
                 />
-                <button 
+                <motion.button 
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => alert('Report Submitted to Command')} 
                   style={{ marginTop: '20px', width: '100%', padding: '18px', background: '#3b82f6', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold', fontSize: '1rem' }}
                 >
                   SUBMIT OFFICIAL REPORT
-                </button>
+                </motion.button>
               </div>
             )}
 
             {sec.link && (
               <Link href={sec.link} style={{ textDecoration: 'none' }}>
-                <button style={{ padding: '15px 30px', background: 'transparent', border: '1px solid #60a5fa', color: '#60a5fa', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  style={{ padding: '15px 30px', background: 'transparent', border: '1px solid #60a5fa', color: '#60a5fa', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}
+                >
                   {sec.buttonText}
-                </button>
+                </motion.button>
               </Link>
             )}
           </div>
-        </section>
+        </motion.section>
       ))}
     </main>
   );
