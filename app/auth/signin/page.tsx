@@ -19,7 +19,7 @@ export default function SignIn() {
           alt="LSPD Logo" 
           style={{ width: '150px', marginBottom: '20px', marginInline: 'auto' }} 
         />
-        <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '10px' }}>ACCESS GRANTED</h1>
+        <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '10px' }}>ACCESS PORTAL</h1>
         <p style={{ color: '#94a3b8', marginBottom: '40px' }}>Authenticate via Discord to access the LSPD Portal.</p>
         
         <button 
