@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 // 1. HARD-CODE YOUR URL AND KEY HERE TEMPORARILY TO BYPASS ENV ISSUES
 // Get these from your Supabase Dashboard > Settings > API
-const SUPABASE_URL = 'https://dtbuzqgpmkxxmjzxxxx.supabase.co'; 
+const SUPABASE_URL = 'https://dtbuzlggibtuicfuunan.supabase.co/rest/v1/'; 
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR0YnV6bGdnaWJ0dWljZnV1bmFuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyMTQxNDQsImV4cCI6MjA5OTc5MDE0NH0.1EKqUQ6OopequE4QILGqLHoonjUQi6_ttv1ZRhMpPyo';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
