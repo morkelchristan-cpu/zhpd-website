@@ -1,46 +1,33 @@
-// 1. Define the interface
+import { createClient } from '@supabase/supabase-js';
+
+// Replace these with your actual values from the Supabase dashboard
+const supabaseUrl = 'https://dtbuzlggibtuicfuunan.supabase.co/rest/v1/'; 
+const supabaseKey = 'sb_publishable_nYxQWc1dPnzcQJb_eMIgOg_JEw9ihHX';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 interface Bot {
   name: string;
   status: string;
   ping: string;
 }
 
-export default async function BotStatusPage() {
-  let bots: Bot[] = [];
-  let error = false;
+export default async function BotStatusIndicator() {
+  // Fetching data from your 'bot_status' table
+  const { data: bots, error } = await supabase.from('bot_status').select('*');
 
-  // 2. Fetch data outside of the JSX return
-  try {
-    const response = await fetch('YOUR_DATABASE_API_URL/status', { cache: 'no-store' });
-    if (!response.ok) throw new Error();
-    bots = await response.json();
-  } catch (e) {
-    error = true;
+  if (error || !bots) {
+    return <div>Error loading status</div>;
   }
 
-  // 3. Handle the error state before the main return
-  if (error) {
-    return (
-      <main style={{ padding: '40px', textAlign: 'center' }}>
-        <h1 className="gradient-text">SYSTEM UNAVAILABLE</h1>
-        <p>Could not reach the status server. Please try again later.</p>
-      </main>
-    );
-  }
-
-  // 4. Return the successful UI
   return (
-    <main style={{ padding: '40px' }}>
-      <h1 className="gradient-text">BOT NETWORK STATUS</h1>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginTop: '40px' }}>
-        {bots.map((bot: Bot) => (
-          <div key={bot.name} className="glass-card">
-            <h2>{bot.name}</h2>
-            <p>Status: {bot.status}</p>
-            <p>Latency: {bot.ping}</p>
-          </div>
-        ))}
-      </div>
-    </main>
+    <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+      {bots.map((bot: Bot) => (
+        <div key={bot.name} title={`${bot.name}: ${bot.status}`} style={{ 
+          width: 10, height: 10, borderRadius: '50%', 
+          background: bot.status === 'online' ? '#22c55e' : '#ef4444',
+          boxShadow: bot.status === 'online' ? '0 0 8px #22c55e' : 'none'
+        }} />
+      ))}
+    </div>
   );
 }
