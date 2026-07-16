@@ -13,24 +13,23 @@ export default function Navbar() {
     { name: 'Roster', path: '/#roster' },
     { name: 'AI', path: '/ai' },
     { name: 'Reports', path: '/#reports' },
-    { name: 'Logs', path: '/logs' }
+    { name: 'Logs', path: '/logs' },
+    { name: 'Status', path: '/status' }
   ];
 
   return (
     <nav style={{ 
       position: 'fixed', top: 0, width: '100%', padding: '20px 0', 
-      display: 'flex', alignItems: 'center', justifyContent: 'center', // Centering the whole bar
+      display: 'flex', alignItems: 'center', justifyContent: 'center', 
       background: 'rgba(2, 6, 23, 0.8)', backdropFilter: 'blur(12px)',
-      zIndex: 1000, margin: 0 // Removes default browser margins
+      zIndex: 1000
     }}>
-      {/* Container for Centered Items */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-        {/* User Name (Left of links) */}
+        
         <div style={{ color: '#fff', fontSize: '0.70rem', textTransform: 'uppercase', marginRight: '20px' }}>
           {session ? `Welcome, ${session.user?.name}` : 'LSPD TERMINAL'}
         </div>
 
-        {/* Navigation Links */}
         {links.map((l) => (
           <Link key={l.name} href={l.path} style={{ 
             color: '#94a3b8', textDecoration: 'none', fontSize: '0.70rem', 
@@ -40,7 +39,6 @@ export default function Navbar() {
           </Link>
         ))}
 
-        {/* Auth Button (Right of links) */}
         {session ? (
           <button onClick={() => signOut()} style={{ 
             marginLeft: '20px', background: 'transparent', border: '1px solid #ef4444', 
