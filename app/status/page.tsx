@@ -1,14 +1,7 @@
+// src/app/status/page.tsx
 'use client';
-import { motion } from 'framer-motion';
-import { createClient } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
-
-// DIRECTLY PASTE YOUR VALUES HERE
-const SUPABASE_URL = 'https://dtbuzlggibtuicfuunan.supabase.co/rest/v1/';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR0YnV6bGdnaWJ0dWljZnV1bmFuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDIxNDE0NCwiZXhwIjoyMDk5NzkwMTQ0fQ.Dobfuw00bjNYjMs3M7tQBlodbDOq11x9ps3GxmdW4Ds';
-
-// Initialize with a manual check
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from '@/src/components/lib/supabase'; // Import the clean, shared instance
 
 export default function StatusPage() {
   const [bots, setBots] = useState<any[]>([]);
@@ -17,9 +10,9 @@ export default function StatusPage() {
 
   useEffect(() => {
     async function fetchStatus() {
+      setLoading(true);
       try {
-        setLoading(true);
-        // Explicitly query the table
+        // Query the table using the shared instance
         const { data, error: sbError } = await supabase
           .from('bot_status')
           .select('*');
@@ -31,8 +24,7 @@ export default function StatusPage() {
           setBots(data || []);
         }
       } catch (err: any) {
-        console.error("Caught error:", err);
-        setError("Network error or invalid connection.");
+        setError("An unexpected error occurred.");
       } finally {
         setLoading(false);
       }
@@ -46,15 +38,15 @@ export default function StatusPage() {
       
       {error && (
         <div style={{ background: '#7f1d1d', padding: '20px', borderRadius: '8px', textAlign: 'center', margin: '20px auto', maxWidth: '600px' }}>
-          <strong>Connection Error:</strong> {error}
+          <strong>Error:</strong> {error}
         </div>
       )}
 
       {loading ? (
-        <p style={{ textAlign: 'center' }}>Syncing...</p>
+        <p style={{ textAlign: 'center' }}>Syncing with database...</p>
       ) : (
         <div style={{ textAlign: 'center' }}>
-          {bots.length === 0 ? <p>Table is empty.</p> : <pre>{JSON.stringify(bots, null, 2)}</pre>}
+          {bots.length === 0 ? <p>No active bots found.</p> : <pre>{JSON.stringify(bots, null, 2)}</pre>}
         </div>
       )}
     </main>
