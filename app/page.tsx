@@ -4,6 +4,13 @@ import Link from 'next/link';
 
 const SECTIONS = [
   { 
+    id: 'status', 
+    title: 'Network Status', 
+    content: 'View real-time operational status for all LSPD automated systems and active bots. Monitor uptime, latency, and system health metrics across our infrastructure.', 
+    link: '/status', 
+    buttonText: 'VIEW SYSTEM STATUS' 
+  },
+  { 
     id: 'about', 
     title: 'Department Mission', 
     content: 'The Los Santos Police Department (LSPD) is built on the pillars of integrity, tactical precision, and community trust. Our mission is to serve as a beacon of order in the heart of Los Santos. From high-speed pursuit management to complex investigations, every officer undergoes rigorous training to handle the city’s evolving threats. We operate not just as law enforcement, but as a community partner, ensuring that civilian safety is prioritized alongside tactical dominance.', 
@@ -85,7 +92,7 @@ export default function HomePage() {
         <p style={{ color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5em', marginTop: '1rem' }}>Command & Control Infrastructure</p>
       </motion.section>
 
-      {/* Dynamic Sections with increased vertical spacing */}
+      {/* Dynamic Sections */}
       {SECTIONS.map((sec) => (
         <motion.section 
           key={sec.id} 
